@@ -25,6 +25,11 @@ export default defineConfig(configEnv => {
         },
       }),
     ],
+    resolve: {
+      alias: {
+        'react/jsx-runtime.js': '@emotion/react/jsx-runtime',
+      },
+    },
     build: {
       sourcemap: true,
     },

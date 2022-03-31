@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react'
 
 import { IconInfo, iconList } from 'data'
 import { createInjection } from '@utils/injection'
+import { AppIconProps } from '@components/AppIcon'
 
 const AppListContainer = createInjection(function useAppListContainer() {
   const [appList, setAppList] = useState<IconInfo[]>(iconList)
@@ -16,6 +17,20 @@ const AppListContainer = createInjection(function useAppListContainer() {
     [appList]
   )
 
+  const moveSort = useCallback((from: AppIconProps, to: AppIconProps) => {
+    const fromIndex = from.index
+    const toIndex = to.index
+
+    setAppList(prevAppList => {
+      const newAppList = [...prevAppList]
+      ;[newAppList[fromIndex], newAppList[toIndex]] = [
+        newAppList[toIndex],
+        newAppList[fromIndex],
+      ]
+      return newAppList
+    })
+  }, [])
+
   const toggleShaking = useCallback(() => {
     setIsShaking(prev => !prev)
   }, [])
@@ -24,10 +39,16 @@ const AppListContainer = createInjection(function useAppListContainer() {
     setIsShaking(true)
   }, [])
 
+  const offShaking = useCallback(() => {
+    setIsShaking(false)
+  }, [])
+
   return {
     isShaking,
     toggleShaking,
     onShaking,
+    offShaking,
+    moveSort,
     appList,
     removeMe,
   }
