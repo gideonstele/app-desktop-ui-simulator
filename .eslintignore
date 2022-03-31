@@ -1,0 +1,7 @@
+**/dist/
+**/tests/__snapshots/
+**/node_modules/
+.github
+.husky
+env
+!.eslintrc.js
