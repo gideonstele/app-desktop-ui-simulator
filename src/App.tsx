@@ -1,7 +1,16 @@
+import { AppListProvider } from 'providers/AppList'
+
+import { Screen } from './components/Screen'
+import { GlobalStyle } from './components/GlobalStyle'
+import { Container } from './components/Container'
+
 export const App = () => {
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
+    <AppListProvider>
+      <Container>
+        <GlobalStyle />
+        <Screen />
+      </Container>
+    </AppListProvider>
   )
 }

@@ -11,6 +11,7 @@
     "baseUrl": "./src",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "paths": {
+      "@assets/*": ["assets/*"],
       "@utils/*": ["utils/*"],
       "@components/*": ["components/*"]
     }
